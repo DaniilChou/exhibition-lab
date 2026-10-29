@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Предложения — Южная Корея: одно лето, два сезона</title><meta name="description" content="Выставка современного южнокорейского медиаискусства."><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#001446"><link rel="icon" type="image/svg+xml" href="/exhibition-lab/favicon.svg"><link rel="preload" href="/exhibition-lab/_astro/gearz-700.CaReemaM.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/exhibition-lab/_astro/ibm-plex-mono-500.CHUWY8Q9.woff2" as="font" type="font/woff2" crossorigin><!-- Масштаб страницы на телефоне и окно Chrome на iPad после поворота — до первого кадра. --><script>
+  (() => {
+    const root = document.documentElement;
+    const phone = matchMedia('(hover: none) and (pointer: coarse)').matches && Math.min(screen.width, screen.height) < 600;
+    const apply = () => {
+      if (!phone) return;
+      const landscape = matchMedia('(orientation: landscape)').matches;
+      const width = landscape ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height);
+      const zoom = width / root.clientWidth;
+      // И уменьшение; но только пока окно по ту же сторону от 768, что при 100 %, — иначе раскладка сменилась бы
+      // (телефон ↔ планшет: Safari 50 % на 393 — окно 786; телефон боком при 125 % — 682 вместо 852).
+      const same = width < 768 === root.clientWidth < 768;
+      const on = same && Math.abs(zoom - 1) > 0.02 && zoom > 0.25 && zoom < 4;
+      root.style.setProperty('--iz', on ? String(1 / zoom) : '1');
+      root.toggleAttribute('data-zoom', on);
+      root.toggleAttribute('data-w-narrow', on && width < 392);
+      root.toggleAttribute('data-w-wide', on && width >= 424);
+    };
+    apply();
+    addEventListener('resize', apply);
+    document.addEventListener('astro:after-swap', apply);
+  })();
+</script><script>
+  (() => {
+    if (!/\bCriOS\//.test(navigator.userAgent)) return;
+    const root = document.documentElement;
+    const BASE = 'width=device-width, initial-scale=1, viewport-fit=cover';
+    let forced = 0; // ширина окна числом; 0 — как в Base.astro
+    let forcedH = 0;
+    const landscape = () =>
+      screen.orientation ? screen.orientation.type.startsWith('landscape') : Math.abs(Number(window.orientation) || 0) === 90;
+    const apply = () => {
+      const meta = document.querySelector('meta[name="viewport"]');
+      if (!meta) return;
+      const long = Math.max(screen.width, screen.height);
+      const short = Math.min(screen.width, screen.height);
+      const want = landscape() ? long : short;
+      const stuck = Math.abs(root.clientWidth - (want === long ? short : long)) <= 2 && Math.abs(root.clientHeight - innerHeight) > 120;
+      if (forced && Math.abs(forced - want) > 2) forced = 0; // повернули обратно
+      if (!forced && stuck) {
+        forced = want;
+        forcedH = Math.round(innerHeight);
+      }
+      // height — чтобы окно не вышло «портретным» (без него 1180 × 1499, и правила (orientation: portrait) сработали бы).
+      const content = forced ? `width=${forced}, height=${forcedH}, initial-scale=1, viewport-fit=cover` : BASE;
+      if (meta.content !== content) meta.content = content;
+      if (forced) {
+        // Увеличено пальцами — видимая высота меньше; страницу под неё не пересчитываем.
+        if (Math.abs((window.visualViewport?.scale ?? 1) - 1) < 0.01) root.style.setProperty('--vp-h', `${Math.round(innerHeight)}px`);
+        root.setAttribute('data-vp-fix', '');
+      } else {
+        root.removeAttribute('data-vp-fix');
+        root.style.removeProperty('--vp-h');
+      }
+    };
+    apply();
+    addEventListener('resize', apply);
+    addEventListener('orientationchange', apply);
+    screen.orientation?.addEventListener('change', apply);
+    window.visualViewport?.addEventListener('resize', apply);
+    document.addEventListener('astro:after-swap', apply);
+  })();
+</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/exhibition-lab/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CKq7OsbX.js"></script><link rel="stylesheet" href="/exhibition-lab/_astro/Base.DiUGWXPV.css"></head><body><!-- Загрузка «лето прогружается ...» (шаг 12) — первой в <body>, чтобы метка встала до первого кадра. --><!-- Прокрутка страницы: на таче прокручивается этот блок, а не окно; на мыши его как бы нет (src/styles/scroll.css). --><div class="page-scroll"><main class="min-h-dvh bg-summer py-edge-lg text-ink"><div class="frame grid grid-cols-4 gap-x-gutter gap-y-row md:grid-cols-8 lg:grid-cols-12"><h1 class="col-span-full font-display text-lead lg:col-span-8 lg:col-start-4">Предложения</h1><p class="col-span-full text-body text-pretty lg:col-span-6 lg:col-start-4">Улучшения поверх её макета — каждое за переключателем. «Включить» откроет главную с улучшением; выбор помнится до конца визита в этой вкладке. «Выключить» вернёт сайт как в макете — в том числе без улучшений, включённых по умолчанию.</p><ul class="col-span-full grid gap-y-row lg:col-span-8 lg:col-start-4"><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Курсор-цикада</p><p class="text-body text-pretty">На мыши и тачпаде вместо курсора — цикада: зелёная с чёрной обводкой, голова — точка клика. В движении машет крылом и поворачивается по ходу, замерла — складывает крыло; над ссылкой поёт — дуга звука; нажатие — взмах и две дуги. На таче её нет, при reduced motion — без взмахов и поворота.</p><p class="text-meta">Вера одобрила 29.10 · включён по умолчанию · сейчас: <span data-fx-state="cicada">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: след цикады</p><p class="text-body text-pretty">Где прошла цикада, по невидимой сетке загораются короткие штрихи 2 px, как её пунктир, — и через 0,4–0,7 с гаснут ступенью. Краска кончается, как в мазках Ли Уфана: чем дальше ведёшь, тем бледнее метки; цикада присела — кисть снова полная. Цвет — по тому, что под штрихом: на светлом — тёмно-синий, на тёмном — её зелёный, на всех страницах одинаково. Над ссылкой след стихает. Только мышь.</p><p class="text-meta">вариант А · Вера одобрила 30.10 · включён по умолчанию · сейчас: <span data-fx-state="px-trail">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-trail&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: полутон-стрёкот</p><p class="text-body text-pretty">В пустой середине зелёной полосы с отсчётом — ряды чёрных точек, к середине они сходятся в тонкие линии, как на плакате GoCA. Волна бежит, у курсора вздувается — цикада поёт громче. На телефоне идёт сама и откликается на прокрутку.</p><p class="text-meta">вариант Б · предложено · сейчас: <span data-fx-state="px-tone">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-tone&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: табло Kermode</p><p class="text-body text-pretty">У курсора заголовок «одно лето / два сезона» пересобирается из вертикальных штрихов, как табло на плакате Kermode: часть штрихов выпадает и мерцает, по краю буквы рассыпаются. Курсор ушёл — снова её шрифт. Только мышь.</p><p class="text-meta">вариант В · предложено · сейчас: <span data-fx-state="px-board">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-board&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: цикада-призрак</p><p class="text-body text-pretty">На пустом верху первого экрана — большой силуэт цикады из вертикальных полос почти в цвет ночи, как мотылёк на плакате Kermode; у курсора полосы проступают зелёным. Силуэт — набросок формы.</p><p class="text-meta">вариант Г · предложено · сейчас: <span data-fx-state="px-ghost">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-ghost&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: полутон по фото</p><p class="text-body text-pretty">У курсора фото травы и фото-полосы «Прошлого» и «Будущего» превращаются в чёрные точки на её зелёном (размер — по темноте фото), след держится и растворяется. Работы художников не трогаем. Только мышь.</p><p class="text-meta">вариант Д · предложено · сейчас: <span data-fx-state="px-photo">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-photo&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: календарь лета</p><p class="text-body text-pretty">В пустой левой колонке программы — точка на каждый день от сегодня до закрытия, неделя — строка. Ближе к открытию точки крупнее, как полутон; дни выставки — полные, события — кольца, сегодня мигает. У курсора — дата и сколько осталось; неделя, мимо которой едет «программа», ярче. Опора — точечные картины Ким Хванги.</p><p class="text-meta">вариант Е · предложено · сейчас: <span data-fx-state="px-calendar">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-calendar&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: магнитный телевизор</p><p class="text-body text-pretty">Строки в пустой середине зелёной полосы (или на верху первого экрана) гнутся и закручиваются вокруг цикады, как развёртка телевизора вокруг магнита в Magnet TV Нам Джун Пайка (1965). Курсор замер — строки стягиваются в одну линию, как в его Zen for TV.</p><p class="text-meta">вариант Ж · предложено · сейчас: <span data-fx-state="px-magnet">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-magnet&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: сад из штрихов</p><p class="text-body text-pretty">Из шва с фото травы в тёмно-синий первый экран прорастают травинки из вертикальных штрихов — там, где прошла цикада; ветер от её движения их клонит, потом трава оседает. Опора — TV Garden Нам Джун Пайка.</p><p class="text-meta">вариант З · предложено · сейчас: <span data-fx-state="px-grass">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-grass&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: эхо Kermode</p><p class="text-body text-pretty">На пустом верху первого экрана — тот же заголовок табло из штрихов, тусклый, как повтор текстового блока на плакате Kermode. У курсора проступает ярче и мерцает.</p><p class="text-meta">вариант Л · предложено · сейчас: <span data-fx-state="px-echo">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-echo&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: шкурка</p><p class="text-body text-pretty">Где цикада присела и улетела, остаётся её пиксельная копия — как сброшенная шкурка (Eclosion на плакате Kermode) — и осыпается за пару секунд. Только мышь.</p><p class="text-meta">вариант И · предложено · сейчас: <span data-fx-state="px-molt">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-molt&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li><li class="grid gap-y-[calc(10*var(--u))]"><span class="dash-x mb-[calc(10*var(--u))] block" aria-hidden="true"></span><p class="text-title">Пиксели: три растра — три времени</p><p class="text-body text-pretty">Один язык пикселей, у каждой зоны свой растр: «Прошлое» — печатной точкой, сад — строкой, «Будущее» — квадратным пикселем. Работает через след и полутон по фото. Только мышь.</p><p class="text-meta">вариант К · предложено · сейчас: <span data-fx-state="px-raster">выключено</span></p><p class="flex gap-x-[calc(40*var(--u))] text-meta"><a class="hit underline-mark" href="/exhibition-lab/?fx=cicada,px-raster&amp;px">включить</a><a class="hit underline-mark" href="/exhibition-lab/proposals/?fx=">выключить</a></p></li></ul></div></main></div><div id="grid-overlay" hidden aria-hidden="true" class="pointer-events-none fixed inset-0 z-[9999] grid grid-cols-4 gap-x-gutter px-margin mix-blend-difference md:grid-cols-8 lg:grid-cols-12"><div class="bg-summer/25"></div><div class="bg-summer/25"></div><div class="bg-summer/25"></div><div class="bg-summer/25"></div><div class="bg-summer/25 hidden md:block"></div><div class="bg-summer/25 hidden md:block"></div><div class="bg-summer/25 hidden md:block"></div><div class="bg-summer/25 hidden md:block"></div><div class="bg-summer/25 hidden md:block md:hidden lg:block"></div><div class="bg-summer/25 hidden md:block md:hidden lg:block"></div><div class="bg-summer/25 hidden md:block md:hidden lg:block"></div><div class="bg-summer/25 hidden md:block md:hidden lg:block"></div></div><script>
+  window.__countdown = () => {
+    for (const root of document.querySelectorAll('[data-countdown]:not([data-live])')) {
+      root.dataset.live = '';
+      const label = root.querySelector('[data-countdown-label]');
+      const value = root.querySelector('[data-countdown-value]');
+      const opening = Number(root.dataset.opening);
+      const closing = Number(root.dataset.closing);
+
+      const plural = new Intl.PluralRules('ru');
+      const units = [
+        [86400, { one: 'день', few: 'дня', many: 'дней' }],
+        [3600, { one: 'час', few: 'часа', many: 'часов' }],
+        [60, { one: 'минута', few: 'минуты', many: 'минут' }],
+        [1, { one: 'секунда', few: 'секунды', many: 'секунд' }],
+      ];
+      // Всегда четыре единицы, как в макете; между числом и словом — U+00A0. Вверх до секунды: в последнюю секунду —
+      // «1 секунда», в момент открытия — уже следующее состояние, а не нули.
+      const duration = (ms) => {
+        let rest = Math.ceil(ms / 1000);
+        return units
+          .map(([size, forms]) => {
+            const n = Math.floor(rest / size);
+            rest -= n * size;
+            return `${n}\u00A0${forms[plural.select(n)] ?? forms.many}`;
+          })
+          .join(' ');
+      };
+      const state = (now) =>
+        now < opening
+          ? ['до выставки', duration(opening - now), true]
+          : now < closing
+            ? ['до закрытия', duration(closing - now), true]
+            : ['выставка', 'завершилась', false];
+
+      let timer = 0;
+      let onScreen = false;
+      const render = () => {
+        const [l, v, live] = state(Date.now());
+        if (label.textContent !== l) label.textContent = l;
+        if (value.textContent !== v) value.textContent = v;
+        return live;
+      };
+      // Следующий тик — ровно на границе секунды системных часов (моменты кратны секунде): отсчёт не дрейфует.
+      // Вне экрана и на скрытой вкладке не тикает; при возвращении — сразу верное значение.
+      const tick = () => {
+        clearTimeout(timer);
+        if (!root.isConnected) return document.removeEventListener('visibilitychange', tick);
+        if (render() && onScreen && !document.hidden) timer = setTimeout(tick, 1000 - (Date.now() % 1000));
+      };
+
+      render();
+      new IntersectionObserver(([entry]) => {
+        onScreen = entry.isIntersecting;
+        tick();
+      }).observe(root);
+      document.addEventListener('visibilitychange', tick);
+    }
+  };
+  window.__countdown();
+</script></body></html><!-- Все скрипты страниц — одним модулем: загружается при входе, части запускаются на каждой странице (src/lib/site.ts). --><script type="module" src="/exhibition-lab/_astro/Base.astro_astro_type_script_index_0_lang.B04QhW0j.js"></script>
